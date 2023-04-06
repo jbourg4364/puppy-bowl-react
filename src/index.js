@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Main from './components/main';
+import { createRoot } from 'react-dom/client';
+import Main from './components/Main'
 
-ReactDOM.render(
-  <Main />,
-  document.getElementById('root')
-);
+createRoot(document.querySelector('#root')).render(<Main />);
