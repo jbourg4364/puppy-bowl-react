@@ -2,28 +2,29 @@ import React, {useEffect, useState} from 'react';
 import PlayerForm from './PlayerForm';
 import { fetchAllPlayers } from '../api/ajaxHelpers';
 import { renderAllPlayers } from './Players';
+import { render } from 'react-dom';
+import { fetchSinglePlayer } from '../api/ajaxHelpers';
+
 
 
 const Main = () => {
-
-    const [players] = useState()
+    const [players, setPlayers] = useState();
+    const [playerId, getPlayerId] = useState();
+  
     useEffect(() => {
-      const getData = async() => {
-         const players = await fetchAllPlayers()
-        renderAllPlayers(players);  
-      }
-       getData();
-    },[]);
-    
+      const getPlayers = async () => {
+        const players = await fetchAllPlayers();
+        setPlayers({players}); 
+        renderAllPlayers(players);
+      };
+      getPlayers({players});
+    }, []);
 
+ 
       return (
         <>
-        <div>
-          <PlayerForm />
-        </div>
-        <div id='all-players-container'>
-            {players}
-        </div>
+        <PlayerForm />
+        <div id="all-players-container"></div>
         </>
       )
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { fetchAllPlayers } from '../api/ajaxHelpers';
 
+
 const playerContainer = document.getElementById('all-players-container');
 
 export const renderAllPlayers = (playerList) => {
@@ -29,8 +30,8 @@ export const renderAllPlayers = (playerList) => {
   let detailButtons = [...document.getElementsByClassName('detail-button')];
   detailButtons.forEach((button) => {
     button.addEventListener('click', async () => {
-      const player = await fetchSinglePlayer(button.dataset.id);
-      renderSinglePlayer(player);
+      const {player} = await fetchSinglePlayer(button.dataset.id);
+      renderSinglePlayer({player});
     });
   });
 
