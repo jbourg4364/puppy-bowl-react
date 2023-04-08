@@ -4,6 +4,7 @@ import { renderAllPlayers } from './Players';
 import { fetchAllPlayers } from '../api/ajaxHelpers';
 
 
+
 export const renderSinglePlayer = (playerObj) => {
     if (!playerObj || !playerObj.id) {
       playerContainer.innerHTML = "<h3>Couldn't find data for this player!</h3>";
